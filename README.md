@@ -6,8 +6,9 @@ Description:-> Code templates, what I have learnt ova my programming journey--of
 
 - This repo will have: templates and some examples of code, that was my attempt at coding without AI.
 
-  - Linux-mint User-Guide and Trouble-Shooting (Support) for older hardware - (read & test wisely)
-  (quick-setup.sh) to run: download or copy code into a New bash script then:
+  - Linux-mint: User-Guide and Trouble-Shooting (Support) for older hardware - (read & test wisely)
+    
+  - [x] (quick-setup.sh) to run: download or copy code into a New bash script then:
   
   Terminal Commands:
 
@@ -20,7 +21,9 @@ Description:-> Code templates, what I have learnt ova my programming journey--of
     then type to run:
     ./quick_setup.sh
 
-  note: if any Issues with the Script Let me know any feedback will ensure correction. use issues tab in the github
-  or Email: <not provided> | social Link: <http://linktr.ee/jamierj8c>
+  note: if any Issues with the Script Let me know any feedback will ensure correction. Use issues tab in the github
+  or Email: <not provided> | social Link: <http://linktr.ee/jamierj8c> to find your preferred contact method.
+  
 ## section coming soon 
+
   
