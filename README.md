@@ -6,6 +6,8 @@ Description:-> Code templates, what I have learnt ova my programming journey--of
 
 - This repo will have: templates and some examples of code, that was my attempt at coding without AI.
 
+  - Linux-mint User-Guide and Trouble-Shooting (Support) for older hardware - (read & test wisely)
+  (quick-setup.sh - not added yet)
   
 ## section coming soon 
   
