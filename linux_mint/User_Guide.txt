@@ -7,7 +7,7 @@ Target OS: Linux Mint (Cinnamon Edition)
 Target Hardware: NVIDIA GeForce GT 1030 (GDDR5, 2 GB VRAM) & similar entry-level GPUs
 
 
-1.Overview & ObjectivesThis guide provides a structured workflow for:
+1.Overview & Objectives This guide provides a structured workflow for:
 
 Installing official NVIDIA proprietary drivers on Linux Mint (Cinnamon Edition).
 
@@ -63,8 +63,8 @@ Open terminal in the directory containing your script.
 
 Grant execution permissions:
 
-chmod +x filename.sh
-Run the script:./filename.sh
+chmod +x quick_setup.sh
+Run the script: ./quick_setup.sh
 
 Driver Troubleshooting & Diagnostics Driver Rollback / System Recovery:
 
