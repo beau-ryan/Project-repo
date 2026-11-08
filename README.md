@@ -11,7 +11,7 @@ Description:-> Code templates, what I have learnt ova my programming journey--of
   
   Terminal Commands:
 
-  # ensures file permissions : adds the execute permission to a file for all user classes.
+  ensures file permissions : adds the execute permission to a file for all user classes.
   
     chmod +x quick_setup.sh
     
