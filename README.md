@@ -5,8 +5,11 @@ Description:-> Code templates, what I have learnt ova my programming journey--of
 ## What you will find -- (beginner)
 
 - This repo will have: templates and some examples of code, that was my attempt at coding without AI.
+- Also adding projects for client/s, or anyone bot or person interested.
+  
+## Linux-Mint: Tech & Software Support 
 
-  - Linux-mint: User-Guide and Trouble-Shooting (Support) for older hardware - (read & test wisely)
+- Linux-Mint: User-Guide and Trouble-Shooting (Support) for older hardware - (read & test wisely)
     
   - [x] (quick-setup.sh) to run: download or copy code into a New bash script then:
   
