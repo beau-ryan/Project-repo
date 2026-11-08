@@ -1,0 +1,130 @@
+# User Guide: NVIDIA Driver Installation & PCSX2 Emulator Setup on Linux Mint
+
+Author: Beau-ryan
+Version: 0.1.0
+Date: November 6, 2026
+Target OS: Linux Mint (Cinnamon Edition)
+Target Hardware: NVIDIA GeForce GT 1030 (GDDR5, 2 GB VRAM) & similar entry-level GPUs
+
+
+1.Overview & ObjectivesThis guide provides a structured workflow for:
+
+Installing official NVIDIA proprietary drivers on Linux Mint (Cinnamon Edition).
+
+Setting up hardware graphics acceleration for gaming and emulation.Installing, configuring, and troubleshooting the PCSX2 (PlayStation 2 Emulator) on entry-level NVIDIA GPUs like the GT 1030.2.
+
+NVIDIA Driver Installation Guide PrerequisitesBefore installing, verify driver support for your specific card on the NVIDIA Driver Downloads Page.
+
+Hardware Note: The NVIDIA GeForce GT 1030 uses the Pascal architecture. It is officially supported by modern driver branches (such as the 535 or 550 production series).
+
+Option A:
+
+Graphical Method (Recommended)
+Open the Linux Mint Application Menu.
+Search for and launch Driver Manager.
+
+Allow the application to refresh available hardware devices.Select the recommended proprietary driver (e.g., nvidia-driver-535).
+
+Click Apply Changes, wait for installation to complete, and restart your computer.
+
+Option B: Command-Line Method (Terminal)
+
+1. Update System Repositories
+    sudo apt update && sudo apt upgrade -y
+
+2. Detect Recommended Drivers
+
+    ubuntu-drivers devices
+
+3. Install Drivers Automatic Installation (Recommended):
+    sudo ubuntu-drivers autoinstall
+
+    Manual Installation (e.g., Branch 535):
+
+    sudo apt install nvidia-driver-535 nvidia-settings
+
+    Fallback Method (Using aptitude for resolution of package conflicts):
+
+    sudo apt install aptitude
+    sudo aptitude install nvidia-driver-535 nvidia-settings
+
+4. Load Kernel Modules & Reboot
+
+    sudo reboot
+
+5. Verify Driver Installation nvidia-settings
+(Alternatively, check active GPU status in the terminal using nvidia-smi)
+
+Option C: 
+
+Automated Shell Script Execution If using a custom shell script (.sh file) to automate the setup:
+
+Open terminal in the directory containing your script.
+
+Grant execution permissions:
+
+chmod +x filename.sh
+Run the script:./filename.sh
+
+Driver Troubleshooting & Diagnostics Driver Rollback / System Recovery:
+
+If your system encounters a black screen after driver updates, 
+boot into Recovery Mode, drop to a root terminal shell, 
+and purge existing driver packages:
+
+	sudo apt purge "nvidia-*"
+	sudo reboot
+
+Graphics Glitches / Driver Verification:
+
+Ensure the open-source nouveau kernel driver is unseated and replaced by proprietary modules: 
+	
+	lsmod | grep nvidia
+
+## 3- PCSX2 Setup & Troubleshooting
+
+PCSX2 Setup & Troubleshooting Guide Common Launch & Loading Issues 
+When PCSX2 fails to launch or crashes on startup in Linux Mint, the primary causes are:
+
+Outdated PPA/APT Packages: Older 32-bit i386 dependencies often break on modern 64-bit Mint releases.
+
+Missing Vulkan Runtime Libraries: Missing 32-bit and 64-bit Vulkan translation components.
+
+Missing PS2 BIOS: PCSX2 requires valid PS2 BIOS binaries in its system directory to boot games.
+
+Step 1: Install PCSX2 (Flatpak vs AppImage)
+
+Method 1: Flatpak Installation (Most Stable)Flatpak self-contains Qt6 dependencies and graphics runtimes, preventing system library conflicts.
+
+Execute in terminal: flatpak install flathub net.pcsx2.PCSX2
+(Or locate PCSX2 in the Linux Mint Software Manager and select the Flathub source).
+
+Method 2: Portable AppImageDownload the latest .AppImage build from the official PCSX2 website.
+
+Make the file executable: chmod +x PCSX2-*.AppImage
+
+Launch directly:./PCSX2-*.AppImage
+
+Step 2: Install Vulkan & Graphics Runtime Libraries Ensure all required 32-bit and 64-bit graphics translation layers are installed:
+
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt install libvulkan1 libvulkan1:i386 vulkan-tools mesa-vulkan-drivers
+
+Verify Vulkan hardware acceleration detects the GT 1030: vulkan info | grep device Name
+
+Step 3: Configure PCSX2 Settings for GT 1030 (2 GB VRAM)
+
+Setting Category | Recommended Configuration | Purpose / Notes:
+
+BIOS Path | ~/.var/app/net.pcsx2.PCSX2/config/PCSX2/bios/ | Place dumped PS2 BIOS files here.
+
+Renderer | Vulkan (Fallback: OpenGL) | Delivers best performance on NVIDIA Pascal GPUs.
+
+Adapter | NVIDIA GeForce GT 1030 | Ensures rendering runs on discrete GPU, not integrated.
+
+Internal Resolution | 2x Native (~720p) or 3x Native (1080p) | Prevents VRAM exhaustion (Do NOT use 4x or higher).
+
+Blending Accuracy | Basic or Medium | Reduces VRAM bandwidth overhead on 64-bit bus limits.
+
+Texture Preloading | Partial | Manages 2 GB VRAM ceiling efficiently during gameplay.
